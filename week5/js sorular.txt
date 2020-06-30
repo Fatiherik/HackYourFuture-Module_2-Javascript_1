@@ -1,0 +1,200 @@
+2. Week
+
+Exercise 1: Remove the comma
+
+Consider the following string:
+
+let myString = "hello,this,is,a,difficult,to,read,sentence";
+Add the variable to your file.
+Log the length of myString.
+The commas make that the sentence is quite hard to read. Find a way to remove the commas from the string and replace them with spaces. (use Google!)
+After replacing the commas, log myString to see if you succeeded.
+
+Solution:
+
+"use strict";
+let myString = "hello,this,is,a,difficult,to,read,sentence";
+let a = myString.length;
+console.log(a);
+let b = myString.replace(/,/g, " ");
+console.log(b);
+
+Exercise 2: The even/odd reporter
+
+Report whether or not a number is odd/even!
+
+Create a for loop, that iterates from 0 to 20.
+Create a conditional statement that checks if the value of the counter variable is odd or even.
+If it's odd, log to the console The number [PUT_NUMBER_HERE] is odd!.
+If it's even, log to the console The number [PUT_NUMBER_HERE] is even!.
+
+Solution:
+
+"use strict";
+for (var i = 0; i <= 20; i++) {
+  if (i % 2 === 0) {
+    console.log("The number is " + i + " even!");
+  } else {
+    console.log("The number is " + i + " odd!");
+  }
+}
+
+Exercise 3: The recipe card
+
+Ever wondered how to make a certain meal? Let's create a recipe list with JavaScript!
+
+Declare a variable that holds an empty object literal (your meal recipe).
+Give the object 3 properties: a title (string), a servings (number) and an ingredients (array of strings) property.
+Log each property out seperately, using a loop (for, while or do/while)
+It should look similar to this:
+
+Meal name: Omelete
+Serves: 2
+Ingredients:
+4 eggs
+2 strips of bacon
+1 tsp salt/pepper
+
+Solution:
+
+"use strict";
+var recipe = {
+  Meal_name: "Fried Spaghetti Cake",
+  Serves: 20,
+  Ingredients: [
+    "1 spaghetti",
+    "4 egg",
+    "salt",
+    "pepper",
+    "vegetable oil",
+    "marinara sauce"
+  ]
+};
+
+for (let item in recipe) {
+  console.log(item + " : " + recipe[item]);
+}
+
+Exercise 4: The reading list
+
+Keep track of which books you read and which books you want to read!
+
+Declare a variable that holds an array of 3 objects, where each object describes a book and has properties for the title (string), author (string), and alreadyRead (boolean indicating if you read it yet).
+Loop through the array of books.
+For each book, log the book title and book author like so: "The Hobbit by J.R.R. Tolkien".
+Create a conditional statement to change the log depending on whether you read it yet or not. If you read it, log a string like You already read "The Hobbit" right after the log of the book details
+If you haven't read it log a string like You still need to read "The Lord of the Rings"
+
+"use strict";
+let books = [
+  {
+    title: "War and Peace",
+    author: "Tolstoy",
+    alreadyRead: true
+  },
+  {
+    title: "Zorba",
+    author: "Nikos Kazancakis",
+    alreadyRead: true
+  },
+  {
+    title: "Divine Comedy",
+    author: "Dante",
+    alreadyRead: false
+  }
+];
+
+for (var item in books) {
+  console.log(books[item].title + " by " + books[item].author);
+}
+
+for (var item in books) {
+  if (books[item].alreadyRead === true) {
+    console.log(books[item]);
+    console.log("You already read " + books[item].title);
+  } else {
+    console.log("You still need to read " + books[item].title);
+  }
+}
+
+Exercise 5: Who wants a drink?
+
+You're at a party and you feel thirsty! However, you've got 5 friends who are also in need of a drink. Let's go get them a drink.
+
+Declare a variable that holds an empty array, called drinkTray.
+There are 3 different types of drinks:
+
+const drinkTypes = ["cola", "lemonade", "water"];
+Create a loop that runs 5 times. On each iteration, push a drink into the drinkTray variable. The drinkTray can only hold at most two instances of the same drink type, for example it can only hold 2 colas, 2 lemonades, 2 waters.
+If there are already two instances of a drinkType then start with the next drink in the array.
+Your drinkTray should contain 2 cola, 2 lemonade and 1 water.
+Log to the console: "Hey guys, I brought a [INSERT VALUES FROM ARRAY]!" (For example: "Hey guys, I brought a cola, cola, lemonade, lemonade, water!")
+
+Solution:
+
+"use strict";
+
+let drinkTray = [];
+const drinkTypes = ["cola", "lemonade", "water"];
+var i = 0;
+while (i < 5) {
+  drinkTray.push(drinkTypes[i % drinkTypes.length]);
+  i++;
+}
+console.log("Hey guys, I brought a " + drinkTray.sort());
+
+4. PROJECT: Grade calculator
+
+Every week ends with a project you have to build on your own. Instead of getting clear-cut instructions, you'll get a list of criteria that your project needs to measure up to.
+
+In this project you'll write a function that calculates grades, based on the American grading system! Let's say a student did a test and they got a 60 out of 100, this function will:
+
+convert the score into a percentage
+calculate what grade corresponds with that percentage, and
+shows in the command line the result: the grade and the percentage
+In this example this is what we would expect the function to return in the command line:
+
+You got a D (60%)!
+When writing the function, make use of the following grade scores:
+
+Grade A (90% - 100%)
+Grade B (80% - 89%)
+Grade C (70% - 79%)
+Grade D (60% - 69%)
+Grade E (50% - 59%)
+Grade F (0% - 49%)
+These are the requirements your project needs to fulfill:
+
+Make a JavaScript file with a name that describes its contents
+Use either a switch or if/else statement
+Write at least 2 comments that explain to others what a line of code is meant to do
+Make the return value of the function a template string, so you can insert variables!
+Use node from the command line to test if your code works as expected
+Good luck!
+
+Solution:
+
+"use strict";
+
+//this function converts scores to grades
+
+function scoreConverter(score) {
+  score = score / 100;
+
+  if (score >= 0 && score <= 0.49) {
+    console.log("You got a F (%s%)!", score * 100);
+  } else if (score >= 0.5 && score <= 0.59) {
+    console.log("You got a E (%s%)!", score * 100);
+  } else if (score >= 0.6 && score <= 0.69) {
+    console.log("You got a D (%s%)!", score * 100);
+  } else if (score >= 0.7 && score <= 0.79) {
+    console.log("You got a C (%s%)!", score * 100);
+  } else if (score >= 0.8 && score <= 0.89) {
+    console.log("You got a B (%s%)!", score * 100);
+  } else if (score >= 0.9 && score <= 1) {
+    console.log("You got a A (%s%)!", score * 100);
+  }
+}
+// Let us test it if it works
+scoreConverter(60);
+

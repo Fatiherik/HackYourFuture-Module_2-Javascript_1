@@ -1,0 +1,261 @@
+3. Week
+
+Exercise 1: You are amazing, Noer!
+
+There is no better way to start your day then with a compliment!
+
+Write a function named giveCompliment
+It takes 1 argument: your name
+Inside the function create an array with 10 strings. Each string should be a compliment, like "great", "awesome"
+Write logic that randomly selects a compliment
+Return a string: "You are [COMPLIMENT], [YOUR_NAME]!
+Call the function three times, giving each function call the same argument: your name.
+
+Solution:
+
+"use strict";
+
+function giveCompliement(name) {
+  var comp = [
+    "great",
+    "awesome",
+    "perfect",
+    "super",
+    "fantastic",
+    "handsome",
+    "excellent",
+    "funny"
+  ];
+  var random = comp[Math.floor(Math.random() * comp.length)];
+  return "You are " + random + " " + name;
+}
+
+console.log(giveCompliement("Noer"));
+console.log(giveCompliement("Noer"));
+console.log(giveCompliement("Noer"));
+
+Exercise 2: Dog years
+
+You know how old your dog is in human years, but what about dog years? Calculate it!
+
+Write a function named calculateDogAge.
+It takes 1 argument: your puppy's age (number).
+Calculate your dog's age based on the conversion rate of 1 human year to 7 dog years.
+Return a string: "Your doggie is [CALCULATED_VALUE] years old in dog years!"
+Call the function three times with different sets of values.
+
+Solution:
+
+"use strict";
+
+function calculateDogAge(age) {
+  var dogAge = age * 7;
+  return "Your doggie is " + dogAge + " years old in dog years!";
+}
+
+console.log(calculateDogAge(5));
+console.log(calculateDogAge(7));
+console.log(calculateDogAge(10));
+
+Exercise 3: Be your own fortune teller
+
+Why pay a fortune teller when you can just program your fortune yourself?
+
+Write a function named tellFortune.
+It takes 4 arguments: number of children (number), partner's name (string), geographic location (string), job title (string).
+Randomly select values from the arrays.
+Return a string: "You will be a [JOB_TITLE] in [LOCATION], and married to [PARTNER_NAME] with [NUMBER_KIDS] kids."
+Create 4 arrays, numChildren, partnerNames, locations and jobs. Give each array 5 random values that make sense
+Call the function 1 time, by passing the arrays as the argument.
+
+Solution:
+
+"use strict";
+
+function tellFortune(
+  numChildren1 = 0,
+  partnerNames1 = "",
+  locations1 = "",
+  jobs1 = ""
+) {
+  numChildren1 = numChildren[Math.floor(Math.random() * numChildren.length)];
+  partnerNames1 = partnerNames[Math.floor(Math.random() * partnerNames.length)];
+  locations1 = locations[Math.floor(Math.random() * locations.length)];
+  jobs1 = jobs[Math.floor(Math.random() * jobs.length)];
+  return (
+    "You will be a " +
+    jobs1 +
+    " in " +
+    locations1 +
+    ", " +
+    "and married to " +
+    partnerNames1 +
+    " with " +
+    numChildren1 +
+    " kids."
+  );
+}
+
+const numChildren = [1, 2, 3, 4, 5];
+const partnerNames = ["Sophie", "Mila", "Eva", "Tess", "Lotte"];
+const locations = ["Amsterdam", "Rotterdam", "Utrecht", "Leiden", "Den Haag"];
+const jobs = [
+  "teacher",
+  "doctor",
+  "financial analyst",
+  "web developer",
+  "recruiter"
+];
+
+console.log(tellFortune(numChildren, partnerNames, locations, jobs));
+
+Exercise 4: Shopping at the supermarket
+
+Let's do some grocery shopping! We're going to get some things to cook dinner with. However, you like to spend your money and always buy too many things. So when you have more than 3 items in your shopping cart the first item gets taken out.
+
+Write a function named addToShoppingCart.
+It takes in 1 argument: a grocery item (string)
+Add grocery item to array. If the amount of items is more than 3 remove the first one in the array
+Return a string: "You bought [LIST_OF_GROCERY_ITEMS]!"
+Create an array with 2 predefined strings: "bananas" and "milk"
+Call the function 3 times, each time with a different string as the argument.
+
+Solution:
+
+"use strict";
+
+var item_list = ["banana", "milk"];
+
+function addToShoppingCart(grocery_item) {
+  if (item_list.length < 3) {
+    item_list.push(grocery_item);
+  } else {
+    item_list.shift();
+    item_list.push(grocery_item);
+  }
+  return "You bought " + item_list;
+}
+
+console.log(addToShoppingCart("cheese"));
+console.log(addToShoppingCart("bread"));
+console.log(addToShoppingCart("juice"));
+
+Exercise 5: Total cost is ...
+
+You want to buy a couple of things from the supermarket to prepare for a party. After scanning all the items the cashier gives you the total price, but the machine a broken! Let's write her a function that does it for her instead!
+
+Write a function called calculateTotalPrice
+It takes 1 argument: an object that contains properties that only contain number values
+Add all the number values together
+Return a number: the total price of all items
+Create an object named cartForParty with 5 properties. Each property should be a grocery item (like beers or chips) and hold a number value (like 1.75 or 0.99)
+Call the function 1 time, giving it the object cartForParty as an argument
+
+Solution:
+
+"use strict";
+
+function calculateTotalPrice(properties) {
+  var total_price = 0;
+  for (var item in properties) {
+    total_price += properties[item];
+  }
+  return total_price;
+}
+
+var cartForParty = {
+  beers: 1.75,
+  chips: 1,
+  pizza: 4,
+  cake: 3,
+  nuts: 2
+};
+
+console.log("Total cost is " + calculateTotalPrice(cartForParty));
+
+4. PROJECT: Credit Card Validator
+Every week ends with a project you have to build on your own. Instead of getting clear-cut instructions, you'll get a list of criteria that your project needs to measure up to.
+
+In this project you'll write a script that validates whether or not a credit card number is valid.
+
+Here are the rules for a valid number:
+
+Number must be 16 digits, all of them must be numbers
+You must have at least two different digits represented (all of the digits cannot be the same)
+The final digit must be even
+The sum of all the digits must be greater than 16
+The following credit card numbers are valid:
+9999777788880000
+6666666666661666
+The following credit card numbers are invalid:
+
+a92332119c011112 (invalid characters)
+4444444444444444 (only one type of number)
+1111111111111110 (sum less than 16)
+6666666666666661 (odd final number)
+These are the requirements your project needs to fulfill:
+
+Make a JavaScript file with a name that describes its contents
+Create a function with a descriptive name, for example: doSomething or calcAnotherThing
+Write at least 2 comments that explain to others what a line of code is meant to do
+Make the return value of the function a template string, so you can insert variables!
+Use node from the command line to test if your code works as expected
+Good luck!
+
+Solution:
+
+"use strict";
+function validator(cardNumber) {
+  // find the the sum of the digits
+  var sum = 0;
+  var x = cardNumber;
+  while (x) {
+    sum += x % 10;
+    x = Math.floor(x / 10);
+  }
+
+  // looking for if the digits are the same
+  var allSame = true;
+  var strCardNumber = cardNumber.toString();
+  var firstChar = strCardNumber[0];
+  for (var i = 0; i < strCardNumber.length; i++) {
+    if (strCardNumber[i] !== firstChar) {
+      allSame = false;
+      break;
+    }
+  }
+
+  //if blocks
+  if (allSame === true) {
+    return (
+      cardNumber + " is an invalid number, all of the digits cannot be the same"
+    );
+  } else if (sum <= 16) {
+    return (
+      cardNumber +
+      " is an invalid number, the sum of all the digits must be greater than 16"
+    );
+  } else if (typeof cardNumber !== "number") {
+    return (
+      cardNumber +
+      " is an invalid number, card number can only consist of numbers"
+    );
+  } else if (cardNumber.toString().length !== 16) {
+    return cardNumber + " is an invalid number, card number must be 16 digits";
+  } else if (cardNumber % 2 !== 0) {
+    return (
+      cardNumber +
+      " is an invalid number, the final digit of the card number must be even"
+    );
+  } else {
+    return cardNumber + " is a valid number";
+  }
+}
+
+console.log(validator(113840308430));
+console.log(validator("a92*32h19c011t12"));
+console.log(validator(4444444444444444));
+console.log(validator(1669196616969961));
+console.log(validator(110110111011110));
+console.log(validator(6666666666661666));
+
